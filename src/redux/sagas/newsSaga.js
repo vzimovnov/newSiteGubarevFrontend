@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+
 import getAllNews from '../../api/news';
-import { newsReceived, getNewsError } from '../actions/news';
+import { newsReceived, getNewsFailed } from '../actions/news';
 import { NEWS_REQUESTED } from '../actionTypes';
 
 function* newsWorker() {
@@ -8,7 +9,7 @@ function* newsWorker() {
     const news = yield call(getAllNews);
     yield put(newsReceived(news));
   } catch (error) {
-    yield put(getNewsError(error.message));
+    yield put(getNewsFailed(error.message));
   }
 }
 function* newsWatcher() {

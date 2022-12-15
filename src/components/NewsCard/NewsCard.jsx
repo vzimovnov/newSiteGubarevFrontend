@@ -1,24 +1,25 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { Avatar, CardActionArea } from '@mui/material';
+
 import './NewsCard.css';
 
-export default function NewsCard({
+function NewsCard({
   post: {
-    login,
-    avatar,
     title,
     content,
     picture,
     tags,
+    user,
   },
 }) {
   return (
-    <Card sx={{ maxWidth: 345 }} className="card">
+    <Card sx={{ maxWidth: 370 }} className="card">
       <CardActionArea>
         <CardMedia
           component="img"
@@ -27,16 +28,19 @@ export default function NewsCard({
           alt=""
         />
         <CardContent>
+          <Avatar
+            src={user.avatar}
+          />
+          <Typography>
+            {user.login}
+          </Typography>
+        </CardContent>
+        <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {content}
-          </Typography>
-          <Typography>
-            {avatar}
-            {' '}
-            {login}
           </Typography>
           <Typography>
             {tags}
@@ -49,11 +53,15 @@ export default function NewsCard({
 
 NewsCard.propTypes = {
   post: PropTypes.shape({
-    login: PropTypes.string,
-    avatar: PropTypes.string,
     title: PropTypes.string,
     content: PropTypes.string,
     picture: PropTypes.string,
     tags: PropTypes.string,
+    user: PropTypes.shape({
+      login: PropTypes.string,
+      avatar: PropTypes.string,
+    }),
   }).isRequired,
 };
+
+export default memo(NewsCard);
