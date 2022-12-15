@@ -12,7 +12,9 @@ function* newsWorker() {
     yield put(getNewsFailed(error.message));
   }
 }
+
 function* newsWatcher() {
   yield takeLatest(NEWS_REQUESTED, newsWorker);
 }
+
 export default newsWatcher;
