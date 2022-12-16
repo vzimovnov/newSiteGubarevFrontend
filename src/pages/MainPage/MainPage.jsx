@@ -5,6 +5,7 @@ import Loader from '../../components/Loader/Loader';
 
 import NewsCard from '../../components/NewsCard/NewsCard';
 import { getNewsRequest } from '../../redux/actions/news';
+import MESSAGE from './constants';
 
 import './MainPage.css';
 
@@ -26,14 +27,9 @@ function MainPage() {
     );
   }
 
-  if (!news.length) {
-    return (
-      <BasicAlert severity="info" message="Нет новостей" />
-    );
-  }
   return (
     <div className="card-list">
-
+      {news.length === 0 && <BasicAlert severity="info" message={MESSAGE} />}
       {news.map((post) => (<NewsCard post={post} key={post.id} />))}
     </div>
 
