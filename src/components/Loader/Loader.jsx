@@ -1,12 +1,14 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
-export default function Loader() {
+function Loader() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CircularProgress />
     </Box>
   );
 }
+
+export default memo(Loader);

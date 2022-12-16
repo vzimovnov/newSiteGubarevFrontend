@@ -26,7 +26,7 @@ export default function newsReducer(state = initialState, action = {}) {
         ...state,
         isLoading: false,
         news: [],
-        error: action.error,
+        error: action.payload,
       };
     default: return state;
   }
