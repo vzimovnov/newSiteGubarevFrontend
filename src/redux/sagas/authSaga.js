@@ -8,7 +8,7 @@ import {
 import { authentication, registration } from '../../api/auth';
 import { authError, authSuccess } from '../actions/auth';
 import { AUTH_REQUEST } from '../actionTypes';
-import { putTokenAtLocalStorage } from '../../utils/LocalStorage';
+import { putTokenAtLocalStorage } from '../../utils/localStorage';
 
 function* authWorker({ payload }) {
   try {

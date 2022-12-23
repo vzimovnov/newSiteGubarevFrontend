@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Box from '@mui/material/Box';
@@ -44,4 +44,4 @@ function BasicModal() {
   );
 }
 
-export default BasicModal;
+export default memo(BasicModal);

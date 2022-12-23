@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { useFormik } from 'formik';
+
 import { Button, TextField } from '@mui/material';
 
 import { authRequest } from '../../redux/actions/auth';
@@ -22,7 +22,7 @@ import './AuthForm.css';
 
 function LogIn() {
   const dispatch = useDispatch();
-  const { modalType } = useSelector((state) => state.modal);
+  const modalType = useSelector((state) => state.modal.modalType);
   const { error } = useSelector((state) => state.auth);
   const isLoginModal = modalType === 'login';
   const currentFields = isLoginModal ? LOGIN_FIELDS : REGISTRATION_FIELDS;
@@ -64,4 +64,4 @@ function LogIn() {
   );
 }
 
-export default LogIn;
+export default memo(LogIn);
