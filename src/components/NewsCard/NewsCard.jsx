@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-// import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Card from '@mui/material/Card';
@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import { Avatar, CardActionArea } from '@mui/material';
 
 import './NewsCard.css';
-import { Link } from 'react-router-dom';
 
 function NewsCard({
   post: {
@@ -26,10 +25,10 @@ function NewsCard({
         component="img"
         height="170"
         image={picture}
-        alt=""
+        alt="picture"
       />
       <CardContent>
-        <CardActionArea>
+        {user && (
           <Link to={`/users/${user?.id}`}>
             <Avatar
               className="avatar"
@@ -39,7 +38,8 @@ function NewsCard({
               {user?.login}
             </Typography>
           </Link>
-        </CardActionArea>
+        )}
+        <CardActionArea />
         <Typography gutterBottom variant="h4" component="div">
           {title}
         </Typography>
@@ -72,6 +72,7 @@ NewsCard.defaultProps = {
   post: {
     tags: '',
     user: {},
+    picture: '',
   },
 };
 
