@@ -11,31 +11,15 @@ const REGISTRATION_VALUES = {
   email: '',
   password: '',
 };
-const loginField = {
-  name: 'login',
-  type: 'text',
-};
-const passwordField = {
-  name: 'password',
-  type: 'password',
-};
-const nameField = {
-  name: 'name',
-  type: 'text',
-};
-const emailField = {
-  name: 'email',
-  type: 'email',
-};
 const LOGIN_FIELDS = [
-  loginField,
-  passwordField,
+  { name: 'login', type: 'text' },
+  { name: 'password', type: 'password' },
 ];
 const REGISTRATION_FIELDS = [
-  nameField,
-  loginField,
-  emailField,
-  passwordField,
+  { name: 'login', type: 'text' },
+  { name: 'name', type: 'text' },
+  { name: 'email', type: 'email' },
+  { name: 'password', type: 'password' },
 ];
 
 const loginValidate = {

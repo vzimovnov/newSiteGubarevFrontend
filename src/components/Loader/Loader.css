@@ -1,14 +1,15 @@
 .loader {
-    position: absolute;
-    left: 50%;
-    top: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
+
 .MuiCircularProgress-root
 .MuiCircularProgress-svg 
 .css-1idz92c-MuiCircularProgress-svg
 .MuiCircularProgress-circle
 .MuiCircularProgress-circleIndeterminate
 .css-176wh8e-MuiCircularProgress-circle {
-    height: 100px;
-    width: 100px;
+  height: 100px;
+  width: 100px;
 }
