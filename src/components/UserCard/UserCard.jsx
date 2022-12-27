@@ -20,17 +20,17 @@ function UserCard({ user }) {
         />
       </CardActionArea>
       <CardContent>
-        <Typography className="user__login">
+        <Typography className="user-login">
           Login:
           {' '}
           {user?.login}
         </Typography>
-        <Typography className="user__name">
+        <Typography className="user-name">
           Name:
           {' '}
           {user?.name}
         </Typography>
-        <Typography className="user__email">
+        <Typography className="user-email">
           Email:
           {' '}
           {user?.email}

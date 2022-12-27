@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import BasicAlert from '../../components/Alert/Alert';
 import Loader from '../../components/Loader/Loader';
 import NewsCard from '../../components/NewsCard/NewsCard';
-
 import UserCard from '../../components/UserCard/UserCard';
 import { getUserRequest } from '../../redux/actions/user';
 
@@ -32,7 +31,7 @@ function UserPage() {
   }
 
   return (
-    <div className="card-list">
+    <div>
       <div className="user">
         <UserCard user={user} />
       </div>
