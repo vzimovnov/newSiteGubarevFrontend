@@ -23,7 +23,7 @@ import './AuthForm.css';
 function LogIn() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.modal.modalType);
-  const { error } = useSelector((state) => state.auth);
+  const error = useSelector((state) => state.auth.error);
   const isLoginModal = modalType === 'login';
   const currentFields = isLoginModal ? LOGIN_FIELDS : REGISTRATION_FIELDS;
   const initialValues = isLoginModal ? LOGIN_VALUES : REGISTRATION_VALUES;

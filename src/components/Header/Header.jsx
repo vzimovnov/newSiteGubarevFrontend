@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import { Link } from 'react-router-dom';
 import { changeModalType, toggleModal } from '../../redux/actions/modal';
 import { logout, verificationRequest } from '../../redux/actions/auth';
 import {
@@ -21,8 +22,7 @@ import {
 
 function Header() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.authUser);
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const { authUser, isLoggedIn } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -41,22 +41,27 @@ function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Link to="/">
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Link>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {NAME}
           </Typography>
           {isLoggedIn
             ? (
               <Box>
-                <Button color="inherit">{user?.login}</Button>
+                <Link to={`/users/${authUser.id}`}>
+                  <Button color="inherit">{authUser?.login}</Button>
+                </Link>
+
                 <Button color="inherit" onClick={() => userLogout()}>{LOGOUT}</Button>
               </Box>
             )
