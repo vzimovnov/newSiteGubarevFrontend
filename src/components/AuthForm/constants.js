@@ -8,6 +8,7 @@ const LOGIN_VALUES = {
 };
 const REGISTRATION_VALUES = {
   login: '',
+  name: '',
   email: '',
   password: '',
 };
