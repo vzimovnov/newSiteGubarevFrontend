@@ -1,0 +1,8 @@
+.news-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+.news-list .avatar{
+    display: none;
+}

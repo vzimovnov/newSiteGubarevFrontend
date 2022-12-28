@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Card from '@mui/material/Card';
@@ -19,49 +20,60 @@ function NewsCard({
   },
 }) {
   return (
-    <Card sx={{ maxWidth: 370 }} className="card">
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={picture}
-          alt=""
-        />
-        <CardContent>
-          <Avatar
-            src={user.avatar}
-          />
-          <Typography>
-            {user.login}
-          </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {content}
-          </Typography>
-          <Typography>
-            {tags}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+    <Card className="card">
+      <CardMedia
+        component="img"
+        height="170"
+        image={picture}
+        alt="picture"
+      />
+      <CardContent>
+        {user && (
+          <Link to={`/users/${user?.id}`}>
+            <Avatar
+              className="avatar"
+              src={user?.avatar}
+            />
+            <Typography className="login">
+              {user?.login}
+            </Typography>
+          </Link>
+        )}
+        <CardActionArea />
+        <Typography gutterBottom variant="h4" component="div">
+          {title}
+        </Typography>
+        <Typography>
+          {content}
+        </Typography>
+        <Typography>
+          {tags}
+        </Typography>
+      </CardContent>
     </Card>
   );
 }
 
 NewsCard.propTypes = {
   post: PropTypes.shape({
-    title: PropTypes.string,
-    content: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
     picture: PropTypes.string,
     tags: PropTypes.string,
     user: PropTypes.shape({
+      id: PropTypes.number,
       login: PropTypes.string,
       avatar: PropTypes.string,
     }),
-  }).isRequired,
+  }),
+};
+
+NewsCard.defaultProps = {
+  post: {
+    tags: '',
+    user: {},
+    picture: '',
+  },
 };
 
 export default memo(NewsCard);
