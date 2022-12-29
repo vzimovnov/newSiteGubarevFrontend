@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import { toggleModal } from '../../redux/actions/modal';
 import AuthForm from '../AuthForm/AuthForm';
 import CLOSE from './constants';
+import AddNewsForm from '../AddNewsForm/AddNewsForm';
 
 const style = {
   position: 'absolute',
@@ -25,7 +26,11 @@ const style = {
 
 function BasicModal() {
   const dispatch = useDispatch();
+  const modalType = useSelector((state) => state.modal.modalType);
   const isOpen = useSelector((state) => state.modal.isOpen);
+
+  const isAuth = modalType === 'login' || modalType === 'signUp';
+  const isAddNews = modalType === 'addNews';
   const handleClose = () => {
     dispatch(toggleModal(false));
   };
@@ -37,7 +42,8 @@ function BasicModal() {
       aria-describedby="modal-modal-description"
     >
       <Box className="modal" sx={{ ...style }}>
-        <AuthForm />
+        {isAuth && <AuthForm />}
+        {isAddNews && <AddNewsForm />}
         <Button onClick={handleClose}>{CLOSE}</Button>
       </Box>
     </Modal>

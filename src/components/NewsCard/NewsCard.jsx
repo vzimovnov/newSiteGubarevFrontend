@@ -24,7 +24,7 @@ function NewsCard({
       <CardMedia
         component="img"
         height="170"
-        image={picture}
+        image={`${process.env.REACT_APP_API_URL}/${picture}`}
         alt="picture"
       />
       <CardContent>

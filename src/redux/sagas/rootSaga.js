@@ -4,6 +4,7 @@ import newsSaga from './newsSaga';
 import authSaga from './authSaga';
 import userVerificationSaga from './userVerificationSaga';
 import userSaga from './userSaga';
+import addNewsSaga from './addNewsSaga';
 
 function* rootSaga() {
   yield all([
@@ -11,6 +12,7 @@ function* rootSaga() {
     authSaga(),
     userVerificationSaga(),
     userSaga(),
+    addNewsSaga(),
   ]);
 }
 

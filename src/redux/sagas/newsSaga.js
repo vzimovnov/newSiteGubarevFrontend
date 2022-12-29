@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import getAllNews from '../../api/news';
+import { getAllNews } from '../../api/news';
 import { newsReceived, getNewsFailed } from '../actions/news';
 import { NEWS_REQUESTED } from '../actionTypes';
 

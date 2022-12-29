@@ -12,13 +12,18 @@ import './UserPage.css';
 
 function UserPage() {
   const dispatch = useDispatch();
-  const { user, isLoading, error } = useSelector((state) => state.users);
+  const {
+    user,
+    isLoading,
+    error,
+    userNews,
+  } = useSelector((state) => state.users);
 
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(getUserRequest(id));
-  }, []);
+  }, [id]);
 
   if (isLoading) {
     return <Loader />;
@@ -31,12 +36,12 @@ function UserPage() {
   }
 
   return (
-    <div>
+    <div className="user-page">
       <div className="user">
         <UserCard user={user} />
       </div>
       <div className="news-list">
-        {user?.news.map((item) => (<NewsCard post={item} key={item.id} />))}
+        {userNews?.map((item) => (<NewsCard post={item} key={item.id} />))}
       </div>
     </div>
 
