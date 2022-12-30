@@ -29,6 +29,7 @@ function UserCard({ user }) {
           component="img"
           image={user?.avatar}
           alt=""
+          height="230"
         />
       </CardActionArea>
       <CardContent>

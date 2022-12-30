@@ -14,6 +14,8 @@ import {
   ADD_NEWS_SCHEMA,
 } from './constants';
 
+import './AddNewsForm.css';
+
 function AddNews() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.modal.modalType);
@@ -54,10 +56,18 @@ function AddNews() {
           helperText={formik.touched[item] && formik.errors[item]}
         />
       ))}
-      <input
-        type="file"
-        onChange={onChange}
-      />
+      <Button
+        className="input-button"
+        color="primary"
+        variant="contained"
+        fullWidth
+      >
+        <input
+          className="change-picture"
+          type="file"
+          onChange={onChange}
+        />
+      </Button>
       <Button
         className="button"
         color="primary"

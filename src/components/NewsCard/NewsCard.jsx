@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Avatar, CardActionArea } from '@mui/material';
+
 import defaultImage from '../../images/News.jpg';
 
 import './NewsCard.css';
