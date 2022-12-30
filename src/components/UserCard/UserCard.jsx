@@ -23,7 +23,7 @@ function UserCard({ user }) {
     dispatch(changeModalType(type));
   };
   return (
-    <Card sx={{ maxWidth: 370 }} className="user-card">
+    <Card className="user-card">
       <CardActionArea>
         <CardMedia
           component="img"
