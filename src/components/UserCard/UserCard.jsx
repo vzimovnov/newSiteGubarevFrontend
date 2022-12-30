@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -8,20 +8,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import { Box, Button } from '@mui/material';
+
 import { changeModalType, toggleModal } from '../../redux/actions/modal';
-import { verificationRequest } from '../../redux/actions/auth';
+import ADD_NEWS from './constants';
 
 import './UserCard.css';
 
 function UserCard({ user }) {
   const dispatch = useDispatch();
-  const { authUser, isLoggedIn } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(verificationRequest());
-    }
-  }, []);
+  const { authUser } = useSelector((state) => state.auth);
 
   const openModal = (type) => {
     dispatch(toggleModal(true));
@@ -55,7 +50,7 @@ function UserCard({ user }) {
         {authUser.id === user?.id
           && (
             <Box>
-              <Button color="inherit" onClick={() => openModal('addNews')}>Добавить новость </Button>
+              <Button color="inherit" onClick={() => openModal(ADD_NEWS)}>Добавить новость </Button>
               <Button color="inherit">Редактировать профиль</Button>
             </Box>
           )}

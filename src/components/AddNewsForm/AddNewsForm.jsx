@@ -14,7 +14,7 @@ import {
   ADD_NEWS_SCHEMA,
 } from './constants';
 
-function NewsOrProfile() {
+function AddNews() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.modal.modalType);
   const error = useSelector((state) => state.auth.error);
@@ -38,27 +38,33 @@ function NewsOrProfile() {
   return (
     <form onSubmit={formik.handleSubmit} className="form">
       <h1>{currentTitle}</h1>
-      {currentFields.map(({ name, type }) => (
+      {currentFields.map((item) => (
         <TextField
           className="text-field"
           fullWidth
-          key={name}
-          id={name}
-          name={name}
-          type={type}
-          label={name}
+          key={item}
+          id={item}
+          name={item}
+          type={item}
+          label={item}
           onBlur={formik.handleBlur}
-          value={formik.values[name]}
+          value={formik.values[item]}
           onChange={formik.handleChange}
-          error={formik.touched[name] && !!formik.errors[name]}
-          helperText={formik.touched[name] && formik.errors[name]}
+          error={formik.touched[item] && !!formik.errors[item]}
+          helperText={formik.touched[item] && formik.errors[item]}
         />
       ))}
       <input
         type="file"
         onChange={onChange}
       />
-      <Button className="button" color="primary" variant="contained" fullWidth type="submit">
+      <Button
+        className="button"
+        color="primary"
+        variant="contained"
+        fullWidth
+        type="submit"
+      >
         {modalType}
       </Button>
       {error && <BasicAlert severity="error" message={error} />}
@@ -66,4 +72,4 @@ function NewsOrProfile() {
   );
 }
 
-export default memo(NewsOrProfile);
+export default memo(AddNews);

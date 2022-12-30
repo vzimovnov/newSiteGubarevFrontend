@@ -29,7 +29,7 @@ function BasicModal() {
   const modalType = useSelector((state) => state.modal.modalType);
   const isOpen = useSelector((state) => state.modal.isOpen);
 
-  const isAuth = modalType === 'login' || modalType === 'signUp';
+  const isAuth = modalType.includes('login') || modalType.includes('signUp');
   const isAddNews = modalType === 'addNews';
   const handleClose = () => {
     dispatch(toggleModal(false));

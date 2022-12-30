@@ -1,13 +1,13 @@
-.news-list{
-display: flex;
-flex-wrap: wrap;
-gap: 35px;
+.news-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 35px;
 }
 
-.user-page{
-text-align: -webkit-center;
+.user-page {
+	text-align: -webkit-center;
 }
 
 .user {
-margin: 20px 0;
+	margin: 20px 0;
 }

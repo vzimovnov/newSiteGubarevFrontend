@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Avatar, CardActionArea } from '@mui/material';
+import defaultImage from '../../images/News.jpg';
 
 import './NewsCard.css';
 
@@ -24,7 +25,7 @@ function NewsCard({
       <CardMedia
         component="img"
         height="170"
-        image={`${process.env.REACT_APP_API_URL}/${picture}`}
+        image={picture ? `${process.env.REACT_APP_API_URL}/${picture}` : defaultImage}
         alt="picture"
       />
       <CardContent>

@@ -1,6 +1,8 @@
 import {
   TOGGLE_MODAL,
-  CHANGE_MODAL_TYPE, AUTH_SUCCESS, ADD_NEWS_SUCCESS,
+  CHANGE_MODAL_TYPE,
+  AUTH_SUCCESS,
+  ADD_NEWS_SUCCESS,
 } from '../actionTypes';
 
 const initialState = {
