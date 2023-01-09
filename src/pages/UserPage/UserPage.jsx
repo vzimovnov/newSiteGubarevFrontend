@@ -20,7 +20,9 @@ function UserPage() {
   } = useSelector((state) => state.users);
 
   const { id } = useParams();
-  useEffect(() => { if (id) dispatch(getUserRequest(id)); }, [id]);
+  useEffect(() => {
+    if (id) dispatch(getUserRequest(id));
+  }, [id]);
 
   if (isLoading) {
     return <Loader />;
