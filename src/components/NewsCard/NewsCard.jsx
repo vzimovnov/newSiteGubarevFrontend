@@ -11,7 +11,6 @@ import {
   Card,
 } from '@mui/material';
 
-import defaultImage from '../../images/News.jpg';
 import defaultAvatar from '../../images/defaultAvatar.png';
 
 import './NewsCard.css';
