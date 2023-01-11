@@ -21,10 +21,10 @@ import {
 
 import './AddNewsForm.css';
 
-function NewsOrProfile() {
+function NewsOrProfileForm() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.modal.modalType);
-  const errorUser = useSelector((state) => state.users.editUserProfileError);
+  const userEditError = useSelector((state) => state.users.editUserProfileError);
   const [picture, setPicture] = useState();
   const isAddNewsModal = modalType === 'addNews';
   const currentFields = isAddNewsModal ? ADD_NEWS_FIELDS : EDIT_USER_PROFILE_FIELDS;
@@ -36,7 +36,7 @@ function NewsOrProfile() {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      if (modalType === 'addNews') {
+      if (isAddNewsModal) {
         dispatch(addNewsRequest({ values, picture }));
       } else {
         dispatch(editUserProfileRequested({ values, picture }));
@@ -87,9 +87,9 @@ function NewsOrProfile() {
       >
         {modalType}
       </Button>
-      {errorUser && <BasicAlert severity="error" message={errorUser} />}
+      {userEditError && <BasicAlert severity="error" message={userEditError} />}
     </form>
   );
 }
 
-export default memo(NewsOrProfile);
+export default memo(NewsOrProfileForm);

@@ -27,6 +27,7 @@ export default function userReducer(state = initialState, action = {}) {
         ...state,
         isLoading: true,
         error: null,
+        editUserProfileError: null,
       };
     case ADD_NEWS_SUCCESS:
       return {

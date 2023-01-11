@@ -32,7 +32,7 @@ function UserCard({ user }) {
         <CardMedia
           component="img"
           image={user?.avatar ? `${process.env.REACT_APP_API_URL}/${user?.avatar}` : defaultAvatar}
-          alt=""
+          alt="avatar"
           height="230"
         />
       </CardActionArea>

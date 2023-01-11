@@ -33,7 +33,6 @@ const editUserProfileValidate = {
   login: Yup.string()
     .min(3, 'Too Short!')
     .max(50, 'Too Long!'),
-  avatar: Yup.mixed(),
 };
 
 const ADD_NEWS_SCHEMA = Yup.object().shape(addNewsValidate);

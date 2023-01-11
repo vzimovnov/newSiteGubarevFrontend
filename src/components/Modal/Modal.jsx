@@ -29,8 +29,8 @@ function BasicModal() {
   const modalType = useSelector((state) => state.modal.modalType);
   const isOpen = useSelector((state) => state.modal.isOpen);
 
-  const isAuth = modalType.includes('login') || modalType.includes('signUp');
-  const isAddNews = modalType.includes('addNews') || modalType.includes('editUserProfile');
+  const isAuth = ['login', 'signUp'].includes(modalType);
+  const isAddNewsOrEditUser = ['addNews', 'editUserProfile'].includes(modalType);
   const handleClose = () => {
     dispatch(toggleModal(false));
   };
@@ -43,7 +43,7 @@ function BasicModal() {
     >
       <Box className="modal" sx={{ ...style }}>
         {isAuth && <AuthForm />}
-        {isAddNews && <AddNewsForm />}
+        {isAddNewsOrEditUser && <AddNewsForm />}
         <Button onClick={handleClose}>{CLOSE}</Button>
       </Box>
     </Modal>
