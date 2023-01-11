@@ -9,6 +9,8 @@ import { addNewsRequest } from '../../redux/actions/addNews';
 import BasicAlert from '../Alert/Alert';
 
 import {
+  ADD_NEWS,
+  EDIT_PROFILE,
   ADD_NEWS_FIELDS,
   EDIT_USER_PROFILE_FIELDS,
   ADD_NEWS_VALUES,
@@ -85,7 +87,7 @@ function NewsOrProfileForm() {
         fullWidth
         type="submit"
       >
-        {modalType}
+        {isAddNewsModal ? ADD_NEWS : EDIT_PROFILE}
       </Button>
       {userEditError && <BasicAlert severity="error" message={userEditError} />}
     </form>

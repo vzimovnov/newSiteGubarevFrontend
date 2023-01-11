@@ -9,7 +9,6 @@ import {
   CardMedia,
   CardContent,
   Card,
-  Button,
 } from '@mui/material';
 
 import defaultImage from '../../images/News.jpg';
@@ -53,14 +52,12 @@ function NewsCard({
         <Typography className="content">
           {content}
         </Typography>
-        <Button variant="contained">
-          <CardActionArea className="tags">
-            <Typography>
-              tags:
-              {tags}
-            </Typography>
-          </CardActionArea>
-        </Button>
+        <CardActionArea>
+          <Typography>
+            tag:
+            {tags}
+          </Typography>
+        </CardActionArea>
       </CardContent>
     </Card>
   );

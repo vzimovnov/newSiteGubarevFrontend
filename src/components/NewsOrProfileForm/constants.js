@@ -2,6 +2,8 @@ import * as Yup from 'yup';
 
 const ADD_NEWS_TITLE = 'Add News';
 const EDIT_USER_PROFILE_TITLE = 'Edit Profile';
+const ADD_NEWS = 'Add News';
+const EDIT_PROFILE = 'Edit Profile';
 
 const ADD_NEWS_VALUES = {
   title: '',
@@ -39,6 +41,8 @@ const ADD_NEWS_SCHEMA = Yup.object().shape(addNewsValidate);
 const EDIT_USER_PROFILE_SCHEMA = Yup.object().shape(editUserProfileValidate);
 
 export {
+  ADD_NEWS,
+  EDIT_PROFILE,
   ADD_NEWS_TITLE,
   EDIT_USER_PROFILE_TITLE,
   ADD_NEWS_VALUES,
