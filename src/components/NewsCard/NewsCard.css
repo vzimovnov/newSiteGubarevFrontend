@@ -1,11 +1,12 @@
 .card {
   display: flex;
   flex-direction: column;
+  width: 350px;
   max-width: 350px;
-  max-height: 400px;
-  width: 250px;
   height: 400px;
+  max-height: 400px;
   margin: 2px;
   align-self: center;
   margin: 0 auto;
-}
+  text-align: -webkit-center;
+  }

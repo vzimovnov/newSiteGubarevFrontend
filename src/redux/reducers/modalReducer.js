@@ -1,4 +1,9 @@
-import { TOGGLE_MODAL, CHANGE_MODAL_TYPE, AUTH_SUCCESS } from '../actionTypes';
+import {
+  TOGGLE_MODAL,
+  CHANGE_MODAL_TYPE,
+  AUTH_SUCCESS,
+  ADD_NEWS_SUCCESS,
+} from '../actionTypes';
 
 const initialState = {
   isOpen: false,
@@ -17,6 +22,7 @@ export default function modalReducer(state = initialState, action = {}) {
         ...state,
         modalType: action.payload,
       };
+    case ADD_NEWS_SUCCESS:
     case AUTH_SUCCESS:
       return {
         ...state,
