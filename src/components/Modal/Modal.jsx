@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import { toggleModal } from '../../redux/actions/modal';
 import AuthForm from '../AuthForm/AuthForm';
 import CLOSE from './constants';
-import AddNewsForm from '../AddNewsForm/AddNewsForm';
+import NewsOrProfileForm from '../NewsOrProfileForm/NewsOrProfileForm';
 
 const style = {
   position: 'absolute',
@@ -43,7 +43,7 @@ function BasicModal() {
     >
       <Box className="modal" sx={{ ...style }}>
         {isAuth && <AuthForm />}
-        {isAddNewsForm && <AddNewsForm />}
+        {isAddNewsForm && <NewsOrProfileForm />}
         <Button onClick={handleClose}>{CLOSE}</Button>
       </Box>
     </Modal>

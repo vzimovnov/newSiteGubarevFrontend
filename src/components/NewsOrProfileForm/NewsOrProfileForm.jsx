@@ -19,7 +19,7 @@ import {
   EDIT_USER_PROFILE_VALUES,
 } from './constants';
 
-import './AddNewsForm.css';
+import './NewsOrProfileForm.css';
 
 function NewsOrProfileForm() {
   const dispatch = useDispatch();
