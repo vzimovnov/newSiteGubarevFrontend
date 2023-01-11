@@ -14,9 +14,10 @@ import {
 
 import { changeModalType, toggleModal } from '../../redux/actions/modal';
 import { ADD_NEWS, EDIT_USER_PROFILE } from './constants';
-import defaultAvatar from '../../images/defaultAvatar.png';
 
 import './UserCard.css';
+
+const DEFAULT_AVATAR = '/images/defaultAvatar.png';
 
 function UserCard({ user }) {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function UserCard({ user }) {
       <CardActionArea>
         <CardMedia
           component="img"
-          image={user?.avatar ? `${process.env.REACT_APP_API_URL}/${user?.avatar}` : defaultAvatar}
+          image={user?.avatar ? `${process.env.REACT_APP_API_URL}/${user?.avatar}` : DEFAULT_AVATAR}
           alt="avatar"
           height="230"
         />
