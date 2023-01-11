@@ -4,34 +4,43 @@ import { useFormik } from 'formik';
 
 import { Button, TextField } from '@mui/material';
 
+import { editUserProfileRequested } from '../../redux/actions/editUserProfile';
 import { addNewsRequest } from '../../redux/actions/addNews';
 import BasicAlert from '../Alert/Alert';
 
 import {
   ADD_NEWS_FIELDS,
+  EDIT_USER_PROFILE_FIELDS,
   ADD_NEWS_VALUES,
   ADD_NEWS_TITLE,
+  EDIT_USER_PROFILE_TITLE,
   ADD_NEWS_SCHEMA,
+  EDIT_USER_PROFILE_SCHEMA,
+  EDIT_USER_PROFILE_VALUES,
 } from './constants';
 
 import './AddNewsForm.css';
 
-function AddNews() {
+function NewsOrProfile() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.modal.modalType);
-  const error = useSelector((state) => state.auth.error);
+  const errorUser = useSelector((state) => state.users.editUserProfileError);
   const [picture, setPicture] = useState();
   const isAddNewsModal = modalType === 'addNews';
-  const currentFields = isAddNewsModal ? ADD_NEWS_FIELDS : null;
-  const initialValues = isAddNewsModal ? ADD_NEWS_VALUES : null;
-  const currentTitle = isAddNewsModal ? ADD_NEWS_TITLE : null;
-  const validationSchema = isAddNewsModal ? ADD_NEWS_SCHEMA : null;
+  const currentFields = isAddNewsModal ? ADD_NEWS_FIELDS : EDIT_USER_PROFILE_FIELDS;
+  const initialValues = isAddNewsModal ? ADD_NEWS_VALUES : EDIT_USER_PROFILE_VALUES;
+  const currentTitle = isAddNewsModal ? ADD_NEWS_TITLE : EDIT_USER_PROFILE_TITLE;
+  const validationSchema = isAddNewsModal ? ADD_NEWS_SCHEMA : EDIT_USER_PROFILE_SCHEMA;
 
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      dispatch(addNewsRequest({ values, picture }));
+      if (modalType === 'addNews') {
+        dispatch(addNewsRequest({ values, picture }));
+      } else {
+        dispatch(editUserProfileRequested({ values, picture }));
+      }
     },
   });
   const onChange = (event) => {
@@ -69,6 +78,7 @@ function AddNews() {
         />
       </Button>
       <Button
+        disabled={!(formik.dirty) && !picture}
         className="button"
         color="primary"
         variant="contained"
@@ -77,9 +87,9 @@ function AddNews() {
       >
         {modalType}
       </Button>
-      {error && <BasicAlert severity="error" message={error} />}
+      {errorUser && <BasicAlert severity="error" message={errorUser} />}
     </form>
   );
 }
 
-export default memo(AddNews);
+export default memo(NewsOrProfile);

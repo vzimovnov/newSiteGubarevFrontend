@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 
 import defaultImage from '../../images/News.jpg';
+import defaultAvatar from '../../images/defaultAvatar.png';
 
 import './NewsCard.css';
 
@@ -37,7 +38,7 @@ function NewsCard({
           <Link to={`/users/${user?.id}`}>
             <Avatar
               className="avatar"
-              src={user?.avatar}
+              src={user?.avatar ? `${process.env.REACT_APP_API_URL}/${user?.avatar}` : defaultAvatar}
             />
             <Typography className="login">
               {user?.login}
@@ -51,9 +52,12 @@ function NewsCard({
         <Typography>
           {content}
         </Typography>
-        <Typography>
-          {tags}
-        </Typography>
+        <CardActionArea>
+          <Typography>
+            tags:
+            {tags}
+          </Typography>
+        </CardActionArea>
       </CardContent>
     </Card>
   );

@@ -4,7 +4,7 @@ import {
   takeLatest,
 } from 'redux-saga/effects';
 
-import getUser from '../../api/users';
+import { getUser } from '../../api/users';
 import { getUserFailed, getUserReceived } from '../actions/user';
 import { USER_REQUESTED } from '../actionTypes';
 

@@ -2,15 +2,19 @@ import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import CardActionArea from '@mui/material/CardActionArea';
-import { Box, Button } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActionArea,
+} from '@mui/material';
 
 import { changeModalType, toggleModal } from '../../redux/actions/modal';
-import ADD_NEWS from './constants';
+import { ADD_NEWS, EDIT_USER_PROFILE } from './constants';
+import defaultAvatar from '../../images/defaultAvatar.png';
 
 import './UserCard.css';
 
@@ -27,7 +31,7 @@ function UserCard({ user }) {
       <CardActionArea>
         <CardMedia
           component="img"
-          image={user?.avatar}
+          image={user?.avatar ? `${process.env.REACT_APP_API_URL}/${user?.avatar}` : defaultAvatar}
           alt=""
           height="230"
         />
@@ -49,12 +53,12 @@ function UserCard({ user }) {
           {user?.email}
         </Typography>
         {authUser.id === user?.id
-          && (
-            <Box>
-              <Button color="inherit" onClick={() => openModal(ADD_NEWS)}>Добавить новость </Button>
-              <Button color="inherit">Редактировать профиль</Button>
-            </Box>
-          )}
+&& (
+<Box>
+  <Button color="inherit" onClick={() => openModal(ADD_NEWS)}>Добавить новость </Button>
+  <Button color="inherit" onClick={() => openModal(EDIT_USER_PROFILE)}>Редактировать профиль</Button>
+</Box>
+)}
       </CardContent>
     </Card>
   );

@@ -1,3 +1,4 @@
 const ADD_NEWS = 'addNews';
+const EDIT_USER_PROFILE = 'editUserProfile';
 
-export default ADD_NEWS;
+export { ADD_NEWS, EDIT_USER_PROFILE };
