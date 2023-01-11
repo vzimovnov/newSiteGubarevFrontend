@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { Avatar } from '@mui/material';
 
 import { changeModalType, toggleModal } from '../../redux/actions/modal';
 import { logout, verificationRequest } from '../../redux/actions/auth';
@@ -17,6 +18,8 @@ import {
   REGISTRATION,
   TOKEN,
 } from './constants';
+
+import './Header.css';
 
 function Header() {
   const dispatch = useDispatch();
@@ -48,7 +51,13 @@ function Header() {
             ? (
               <Box>
                 <Link to={`/users/${authUser.id}`}>
-                  <Button color="inherit">{authUser?.login}</Button>
+                  <Button color="inherit">
+                    <Avatar
+                      className="avatar"
+                      src={`${process.env.REACT_APP_API_URL}/${authUser.avatar}`}
+                    />
+                    {authUser?.login}
+                  </Button>
                 </Link>
 
                 <Button color="inherit" onClick={() => userLogout()}>{LOGOUT}</Button>

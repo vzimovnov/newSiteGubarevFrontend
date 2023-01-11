@@ -6,6 +6,7 @@ import {
   VERIFICATION_SUCCESS,
   VERIFICATION_ERROR,
   VERIFICATION_REQUESTED,
+  EDIT_USER_PROFILE_SUCCESS,
 } from '../actionTypes';
 
 const initialState = {
@@ -23,6 +24,7 @@ export default function authReducer(state = initialState, action = {}) {
         isLoading: true,
         error: null,
       };
+    case EDIT_USER_PROFILE_SUCCESS:
     case VERIFICATION_SUCCESS:
     case AUTH_SUCCESS:
       return {
