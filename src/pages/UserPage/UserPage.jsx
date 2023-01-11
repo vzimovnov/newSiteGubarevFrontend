@@ -21,7 +21,9 @@ function UserPage() {
 
   const { id } = useParams();
   useEffect(() => {
-    if (id) dispatch(getUserRequest(id));
+    if (id) {
+      dispatch(getUserRequest(id));
+    }
   }, [id]);
 
   if (isLoading) {

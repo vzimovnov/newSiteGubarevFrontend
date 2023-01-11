@@ -17,6 +17,8 @@ import defaultAvatar from '../../images/defaultAvatar.png';
 
 import './NewsCard.css';
 
+const DEFAULT_IMAGE = '/images/News.jpg';
+
 function NewsCard({
   post: {
     title,
@@ -31,7 +33,7 @@ function NewsCard({
       <CardMedia
         component="img"
         height="170"
-        image={picture ? `${process.env.REACT_APP_API_URL}/${picture}` : defaultImage}
+        image={picture ? `${process.env.REACT_APP_API_URL}/${picture}` : DEFAULT_IMAGE}
         alt="picture"
       />
       <CardContent>

@@ -8,8 +8,8 @@ import {
   Card,
   CardContent,
   CardMedia,
-  Typography,
   CardActionArea,
+  Typography,
 } from '@mui/material';
 
 import { changeModalType, toggleModal } from '../../redux/actions/modal';
