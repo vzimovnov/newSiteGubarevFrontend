@@ -13,9 +13,11 @@ import {
 } from '@mui/material';
 
 import { changeModalType, toggleModal } from '../../redux/actions/modal';
-import ADD_NEWS from './constants';
+import { ADD_NEWS, EDIT_USER_PROFILE } from './constants';
 
 import './UserCard.css';
+
+const DEFAULT_AVATAR = '/images/defaultAvatar.png';
 
 function UserCard({ user }) {
   const dispatch = useDispatch();
@@ -30,8 +32,8 @@ function UserCard({ user }) {
       <CardActionArea>
         <CardMedia
           component="img"
-          image={user?.avatar}
-          alt=""
+          image={user?.avatar ? `${process.env.REACT_APP_API_URL}/${user?.avatar}` : DEFAULT_AVATAR}
+          alt="avatar"
           height="230"
         />
       </CardActionArea>
@@ -52,12 +54,12 @@ function UserCard({ user }) {
           {user?.email}
         </Typography>
         {authUser.id === user?.id
-          && (
-            <Box>
-              <Button color="inherit" onClick={() => openModal(ADD_NEWS)}>Добавить новость </Button>
-              <Button color="inherit">Редактировать профиль</Button>
-            </Box>
-          )}
+&& (
+<Box>
+  <Button color="inherit" onClick={() => openModal(ADD_NEWS)}>Добавить новость </Button>
+  <Button color="inherit" onClick={() => openModal(EDIT_USER_PROFILE)}>Редактировать профиль</Button>
+</Box>
+)}
       </CardContent>
     </Card>
   );

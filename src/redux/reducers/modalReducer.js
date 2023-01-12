@@ -3,6 +3,7 @@ import {
   CHANGE_MODAL_TYPE,
   AUTH_SUCCESS,
   ADD_NEWS_SUCCESS,
+  EDIT_USER_PROFILE_SUCCESS,
 } from '../actionTypes';
 
 const initialState = {
@@ -22,6 +23,7 @@ export default function modalReducer(state = initialState, action = {}) {
         ...state,
         modalType: action.payload,
       };
+    case EDIT_USER_PROFILE_SUCCESS:
     case ADD_NEWS_SUCCESS:
     case AUTH_SUCCESS:
       return {

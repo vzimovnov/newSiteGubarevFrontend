@@ -2,11 +2,14 @@ import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Button,
+  Avatar,
+} from '@mui/material';
 
 import { changeModalType, toggleModal } from '../../redux/actions/modal';
 import { logout, verificationRequest } from '../../redux/actions/auth';
@@ -17,6 +20,10 @@ import {
   REGISTRATION,
   TOKEN,
 } from './constants';
+
+import './Header.css';
+
+const DEFAULT_AVATAR = '/images/defaultAvatar.png';
 
 function Header() {
   const dispatch = useDispatch();
@@ -48,7 +55,13 @@ function Header() {
             ? (
               <Box>
                 <Link to={`/users/${authUser.id}`}>
-                  <Button color="inherit">{authUser?.login}</Button>
+                  <Button color="inherit">
+                    <Avatar
+                      className="avatar"
+                      src={authUser.avatar ? `${process.env.REACT_APP_API_URL}/${authUser.avatar}` : DEFAULT_AVATAR}
+                    />
+                    {authUser?.login}
+                  </Button>
                 </Link>
 
                 <Button color="inherit" onClick={() => userLogout()}>{LOGOUT}</Button>

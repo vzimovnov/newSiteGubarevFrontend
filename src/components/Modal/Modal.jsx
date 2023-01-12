@@ -1,14 +1,13 @@
 import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
+import { Box, Modal, Button } from '@mui/material';
 
 import { toggleModal } from '../../redux/actions/modal';
 import AuthForm from '../AuthForm/AuthForm';
+import NewsOrProfileForm from '../NewsOrProfileForm/NewsOrProfileForm';
+
 import CLOSE from './constants';
-import AddNewsForm from '../AddNewsForm/AddNewsForm';
 
 const style = {
   position: 'absolute',
@@ -30,7 +29,7 @@ function BasicModal() {
   const isOpen = useSelector((state) => state.modal.isOpen);
 
   const isAuth = ['login', 'signUp'].includes(modalType);
-  const isAddNews = modalType === 'addNews';
+  const isAddNewsForm = ['addNews', 'editUserProfile'].includes(modalType);
   const handleClose = () => {
     dispatch(toggleModal(false));
   };
@@ -43,7 +42,7 @@ function BasicModal() {
     >
       <Box className="modal" sx={{ ...style }}>
         {isAuth && <AuthForm />}
-        {isAddNews && <AddNewsForm />}
+        {isAddNewsForm && <NewsOrProfileForm />}
         <Button onClick={handleClose}>{CLOSE}</Button>
       </Box>
     </Modal>

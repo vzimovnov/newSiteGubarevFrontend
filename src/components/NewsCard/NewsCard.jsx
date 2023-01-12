@@ -13,6 +13,7 @@ import {
 
 import './NewsCard.css';
 
+const DEFAULT_AVATAR = '/images/defaultAvatar.png';
 const DEFAULT_IMAGE = '/images/News.jpg';
 
 function NewsCard({
@@ -37,7 +38,7 @@ function NewsCard({
           <Link to={`/users/${user?.id}`}>
             <Avatar
               className="avatar"
-              src={user?.avatar}
+              src={user?.avatar ? `${process.env.REACT_APP_API_URL}/${user?.avatar}` : DEFAULT_AVATAR}
             />
             <Typography className="login">
               {user?.login}
@@ -48,12 +49,15 @@ function NewsCard({
         <Typography gutterBottom variant="h4" component="div">
           {title}
         </Typography>
-        <Typography>
+        <Typography className="content">
           {content}
         </Typography>
-        <Typography>
-          {tags}
-        </Typography>
+        <CardActionArea>
+          <Typography>
+            tag:
+            {tags}
+          </Typography>
+        </CardActionArea>
       </CardContent>
     </Card>
   );
